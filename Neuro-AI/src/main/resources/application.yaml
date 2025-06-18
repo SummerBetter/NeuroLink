@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: neuro-ai
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: deepseek-r1:7b
+logging:
+  config: classpath:logback-spring.xml
+
