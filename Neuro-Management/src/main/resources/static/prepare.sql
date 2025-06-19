@@ -10,3 +10,21 @@ CREATE TABLE users (
                        INDEX idx_email (email),
                        INDEX idx_username (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户基本信息表';
+
+CREATE USER 'neruo'@'%' IDENTIFIED BY 'Hx1329195066@';
+-- 授予所有数据库的所有权限（生产环境建议缩小权限范围）
+-- 创建neuro用户（如果不存在）
+CREATE USER IF NOT EXISTS 'neuro'@'localhost' IDENTIFIED BY 'Hx132919566@';
+CREATE USER IF NOT EXISTS 'neuro'@'127.0.0.1' IDENTIFIED BY 'Hx132919566@';
+CREATE USER IF NOT EXISTS 'neuro'@'%' IDENTIFIED BY 'Hx132919566@';
+
+-- 授予权限
+GRANT ALL PRIVILEGES ON NeuroLink.* TO 'neuro'@'localhost';
+GRANT ALL PRIVILEGES ON NeuroLink.* TO 'neuro'@'127.0.0.1';
+GRANT ALL PRIVILEGES ON NeuroLink.* TO 'neuro'@'%';
+
+-- 刷新权限
+FLUSH PRIVILEGES;
+
+-- 验证权限
+SHOW GRANTS FOR 'neuro'@'localhost';
